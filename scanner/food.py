@@ -65,8 +65,8 @@ def parse_catalog():
 		html_products = c.find_all('a')
 		for p in html_products:
 
-			#if p.text not in ['Молоко', 'Сыр']:
-			#	continue
+			if p.text not in ['Молоко', 'Сыр']:
+				continue
 
 			product = manager.dict()
 			product['name'] = p.text
@@ -74,7 +74,7 @@ def parse_catalog():
 
 			catalog.append(product)
 
-	pool = mp.Pool(processes = 8)
+	pool = mp.Pool(processes = 2)
 	pool.map(parse_types, catalog)
 
 	for product in catalog:
