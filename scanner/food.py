@@ -25,7 +25,7 @@ def render_html(url):
 
 	session = HTMLSession()
 	r = session.get(url)
-	r.html.render()
+	r.html.render(timeout=30)
 
 	if r.status_code == 200:
 		print('Ok')
